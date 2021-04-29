@@ -8,9 +8,18 @@ const clearButton = document.querySelector("#clear-todos");
 
 eventListeners();
 
-function eventListeners(){
+function eventListeners(){//tüm event listenerlar 
 
     form.addEventListener("submit",addTodo);
+    document.addEventListener("DOMContentLoaded",loadAllTodosToUI)
+}
+
+
+function loadAllTodosToUI(){
+    let todos=getTodosFromStorage();
+    todos.forEach(function(todo){
+        addTodoUI(todo);
+    })
 }
 
 function addTodo(e){
@@ -28,7 +37,6 @@ function addTodo(e){
     }
    // console.log(newTodo);
    //todoları dinamik olarak eklemek için
-   addTodoUI(newTodo);
     e.preventDefault();
 }  
 
